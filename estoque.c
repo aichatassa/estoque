@@ -15,7 +15,7 @@ typedef struct { //Struct que armazena os dados do produto
 int main () {
 
     cadastra_quants();
-    cadastra_produto(cadastra_quants); //Corrigir parametro
+    cadastra_produto(cadastra_quants); //PARAMETRO CORRIGIDO
     menu();
 
 }
