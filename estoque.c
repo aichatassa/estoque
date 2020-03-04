@@ -6,7 +6,7 @@
 #define IND 100
 
 typedef struct { //Struct que armazena os dados do produto
-    float preco;
+    float preco[IND];
     char nome[IND];
     int id[IND];
 
@@ -15,7 +15,7 @@ typedef struct { //Struct que armazena os dados do produto
 int main () {
 
     cadastra_quants();
-    cadastra_produto(int quant_produto);
+    cadastra_produto(cadastra_quants); //Corrigir parametro
     menu();
 
 }
@@ -59,31 +59,26 @@ int cadastra_quants(){
         printf("Entre com o número de Lojas \n");
         scanf("%d", &quant_loja);
         getchar();
-    }while(quant_loja <= 0);
 
-    for(i = 0; i < quant_loja; i++){
-
-        do{
-            printf("Entre com o número de produtos: \n");
-            scanf("%d", &quant_produto);
-            getchar();
-        }while(quant_produto <= 0);
-    } 
+        printf("Entre com o número de produtos: \n");
+        scanf("%d", &quant_produto);
+        getchar();
+    }while(quant_loja <= 0 ||quant_produto <= 0);
+    
 
     return 0;
 }
 
-int cadastra_produto(int quant_produto) {
+int cadastra_produto(int quant_produto, int num_produto) {
     int i;
     Estoque prod;
     Estoque valor;
-    Estoque ident;
+    //Estoque ident;
 
     for(i = 0; i < num_produto; i++){
-        print("Informe os produtos: \n");
+        printf("Informe os produtos: \n");
         printf("\nNome: ");
         fgets(prod.nome, IND, stdin);
-        getchar();
 
         printf("\nPreco: ");
         scanf("%f", &valor.preco[i]);
@@ -95,11 +90,13 @@ int cadastra_produto(int quant_produto) {
 int matriz_estoque(int num_loja, int num_produto){
     int matriz[LIN][COL];
     int i, j;
+    Estoque ident;
 
     printf("Informe a matriz de estoque: \n"); //REQUER TRATAMENTO DE VALORES
     for(i = 0; i < num_loja; i++) {
+        ident.id[i];
         for(j = 0; j < num_produto; i++) {
-            scanf("%d", &matriz[i][j])
+            scanf("%d", &matriz[i][j]);
         }
     }
     return 0;
