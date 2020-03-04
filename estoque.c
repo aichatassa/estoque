@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Constantes para os índices de matrizes e vetores utilizados
 #define LIN 5
 #define COL 5
 #define IND 100
 
-//DECLARAÇÃO DAS FUNÇÕES PARA REMOVER WARNINGS
+//DECLARAÇÃO DAS FUNÇÕES PARA REMOVER WARNINGS AO COMPILAR
 int cadastra_quants();
 int cadastra_produto(int quant_produto);
 int matriz_estoque(int quant_loja, int quant_produto);
@@ -23,7 +24,7 @@ int main () {
 
     cadastra_quants();
     cadastra_produto(cadastra_quants); //Corrigir parametro
-    //TOO FEW ARGUMENTS
+    //ERRO TOO FEW ARGUMENTS
     //matriz_estoque(cadastra_quants);
     vetor_abastecimento(cadastra_quants);
     menu();
@@ -36,19 +37,19 @@ int menu() { //Menu de seleção das opções do programa
     do {
         printf("Gerenciamento de estoque: \n");
         printf("(1) Abastecer estoque\n");
-        printf("(2) Pesquisar produto\n");//PRECISA FAZER FUNÇÕES
+        printf("(2) Pesquisar produto\n");//PRECISA FAZER FUNÇÕES DA OPÇÃO
         printf("(3) Sair\n");
         scanf("%d", &op);
 
         switch(op) {
             case 1:
-                // TOO FEW ARGUMENTS
+                //ERRO TOO FEW ARGUMENTS
                 //abastecimento_estoque(cadastra_quants, matriz_estoque, vetor_abastecimento);
 
                 break;
 
             case 2:
-                //NECESSITA CRIAR FUNÇÃO PARA PESQUISAR
+
                 break;
 
             case 3:
