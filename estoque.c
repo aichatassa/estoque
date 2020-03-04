@@ -69,13 +69,13 @@ int cadastra_quants(){
     return 0;
 }
 
-int cadastra_produto(int quant_produto, int num_produto) {
+int cadastra_produto(int quant_produto) {
     int i;
     Estoque prod;
     Estoque valor;
     //Estoque ident;
 
-    for(i = 0; i < num_produto; i++){
+    for(i = 0; i < quant_produto; i++){
         printf("Informe os produtos: \n");
         printf("\nNome: ");
         fgets(prod.nome, IND, stdin);
