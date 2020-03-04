@@ -48,7 +48,7 @@ int menu() { //Menu de seleção das opções do programa
                 break;
 
             case 2:
-
+                //NECESSITA CRIAR FUNÇÃO PARA PESQUISAR
                 break;
 
             case 3:
