@@ -22,11 +22,11 @@ typedef struct { //Struct que armazena os dados do produto
 
 int main () {
 
-    cadastra_quants();
-    cadastra_produto(cadastra_quants); //Corrigir parametro
-    //ERRO TOO FEW ARGUMENTS
-    //matriz_estoque(cadastra_quants);
-    vetor_abastecimento(cadastra_quants);
+    cadastra_quants_loja();
+    cadastra_quants_produto();
+    cadastra_produto(cadastra_quants_produto);
+    matriz_estoque(cadastra_quants_loja, cadastra_quants_produto);
+    vetor_abastecimento(cadastra_quants_produto);
     menu();
 
 }
@@ -63,41 +63,60 @@ int menu() { //Menu de seleção das opções do programa
     }while(op != 3);
 }
 
-int cadastra_quants(){
-    int i, quant_loja = 1, quant_produto;
+int cadastra_quants_loja(){
+    int quant_loja;
 
     do{
         printf("Entre com o número de lojas \n");
         scanf("%d", &quant_loja);
         getchar();
+    }while(quant_loja <= 0);
+    
+    return quant_loja;
+}
 
-        printf("Entre com o número de produtos: \n");
+int cadastra_quants_produto(){
+    int quant_produto;
+
+    do{
+        printf("Entre com o número de produtos \n");
         scanf("%d", &quant_produto);
         getchar();
-    }while(quant_loja <= 0 ||quant_produto <= 0);
+    }while(quant_produto <= 0);
     
-    return 0;
+    //printf("\n");
+    
+    //printf(quant_produto);
+    
+    //printf("\n");
+    
+    return quant_produto;
 }
 
 int cadastra_produto(int quant_produto) {
     int i;
     Estoque prod;
     Estoque valor;
-    //Estoque ident;
+    Estoque ident;
+    
+    //printf(quant_produto);
+    
+    //printf("\n\n");
 
-     printf("Informe os produtos: \n");
+    printf("Informe os produtos: \n");
 
     for(i = 0; i < quant_produto; i++){
         printf("Nome: \n");
-        fgets(prod.nome, IND, stdin);
+        fgets(prod.nome, 100, stdin);
 
         printf("Preco: \n");
         scanf("%f", &valor.preco[i]);
         
         getchar();
+        
     }
 
-    return 0;
+    return prod.nome;
 }
 
 int matriz_estoque(int quant_loja, int quant_produto){
