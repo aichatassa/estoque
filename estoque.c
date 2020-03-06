@@ -67,7 +67,7 @@ int cadastra_quants(){
     int i, quant_loja = 1, quant_produto;
 
     do{
-        printf("Entre com o número de Lojas \n");
+        printf("Entre com o número de lojas \n");
         scanf("%d", &quant_loja);
         getchar();
 
@@ -85,13 +85,16 @@ int cadastra_produto(int quant_produto) {
     Estoque valor;
     //Estoque ident;
 
+     printf("Informe os produtos: \n");
+
     for(i = 0; i < quant_produto; i++){
-        printf("Informe os produtos: \n");
-        printf("\nNome: ");
+        printf("Nome: \n");
         fgets(prod.nome, IND, stdin);
 
-        printf("\nPreco: ");
+        printf("Preco: \n");
         scanf("%f", &valor.preco[i]);
+        
+        getchar();
     }
 
     return 0;
