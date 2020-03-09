@@ -76,13 +76,16 @@ int cadastra_quants_loja(){
 }
 
 int cadastra_quants_produto(){
-    int quant_produto;
+    char quant_produto[IND]; //DEIXEI EM CHAR PARA PASSAR PARA INT PARA TESTAR ERRO
+    //int aux_prod;
 
-    do{
-        printf("Entre com o número de produtos \n");
-        scanf("%d", &quant_produto);
-        getchar();
-    }while(quant_produto <= 0);
+ 
+    printf("Entre com o número de produtos \n");
+    fgets(quant_produto, IND, stdin);
+        
+    //aux_prod = atoi(quant_produto);
+        
+    // printf(aux_prod);
     
     //printf("\n");
     
@@ -95,17 +98,20 @@ int cadastra_quants_produto(){
 
 int cadastra_produto(int quant_produto) {
     int i;
+    int aux_prod = atoi(quant_produto); //NAO FUNCIONA AINDA
     Estoque prod;
     Estoque valor;
     Estoque ident;
+    
+    printf(aux_prod);
     
     //printf(quant_produto);
     
     //printf("\n\n");
 
-    printf("Informe os produtos: \n");
+    printf("Informe os produtos: \n"); //ERRO FAZ FUNÇÃO SER PULADA (SEGMENTATION FAULT)
 
-    for(i = 0; i < quant_produto; i++){
+    for(i = 0; i < atoi(quant_produto); i++){
         printf("Nome: \n");
         fgets(prod.nome, 100, stdin);
 
