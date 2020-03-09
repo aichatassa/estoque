@@ -7,12 +7,10 @@
 #define COL 5
 #define IND 100
 
-//DECLARAÇÃO DAS FUNÇÕES PARA REMOVER WARNINGS AO COMPILAR
-void cadastra_quants(int num_loja);
-void cadastra_quants_loja(int num_prod);
-void cadastra_quants_produto();
-void cadastra_produto(int num_prod);
-//int matriz_estoque(int quant_loja, int *aux_prod);
+int cadastra_quants_loja();
+int cadastra_quants_produto();
+void cadastra_produto();
+//int matriz_estoque(int quant_loja, int num_prod);
 //int vetor_abastecimento(int *aux_prod);
 //int abastecimento_estoque(int quant_loja, int *aux_prod, int vetor[IND], int matriz[LIN][COL]);
 
@@ -28,9 +26,9 @@ int main () {
 
   int num_loja, num_prod;
 
-    cadastra_quants_loja(num_loja);
-    cadastra_quants_produto(num_prod);
-    cadastra_produto(cadastra_quants_produto);
+    cadastra_quants_loja();
+    //cadastra_quants_produto();
+    cadastra_produto(cadastra_quants_produto());//GAMBIARRA
     //matriz_estoque(cadastra_quants_loja, cadastra_quants_produto);
     //vetor_abastecimento(cadastra_quants_produto);
     //menu();
@@ -69,17 +67,22 @@ int main () {
     }while(op != 3);
 }*/
 
-void cadastra_quants_loja(int num_loja){
+int cadastra_quants_loja(){ //OK
+  int num_loja;
     do{
         printf("Entre com o número de lojas \n");
         scanf("%d", &num_loja);
         getchar();
     }while(num_loja <= 0);
+
+    //printf("%d", num_loja);
+
+    return num_loja;
     
 }
 
-void cadastra_quants_produto(int num_prod){
-    //int quant_produto;
+int cadastra_quants_produto(){//OK EU ACHO
+    int num_prod;
     //int *aux_prod;//TENTEI USAR PONTEIRO PARA ARRUMAR O PROBLEMA
 
     //aux_prod = &quant_produto;
@@ -97,18 +100,20 @@ void cadastra_quants_produto(int num_prod){
     //printf("\n");
     //aux_prod = malloc (sizeof(int));
 
-    //printf("%d", aux_prod);
+    printf("numero produtos %d\n", num_prod);
     //printf("\n");
+
+    return num_prod;
    
 }
 
 void cadastra_produto(int num_prod) {
-    int i;
+    int i/*, num_prod*/;
     TEstoque prod;
     TEstoque valor;
     TEstoque ident;
-    printf("%d", num_prod);
-    printf("Informe os produtos: \n"); //ERRO FAZ FUNÇÃO SER PULADA (SEGMENTATION FAULT)
+    printf("num prod %d\n", num_prod);
+    printf("\nInforme os produtos: \n"); //ERRO FAZ FUNÇÃO SER PULADA (SEGMENTATION FAULT)
     //printf("%d", *aux_prod);
     for(i = 0; i < num_prod; i++){
         printf("Nome: \n");
@@ -121,15 +126,15 @@ void cadastra_produto(int num_prod) {
     }
 }
 
-/*int matriz_estoque(int quant_loja, int *aux_prod){
+/*int matriz_estoque(int quant_loja, int num_prod){
     int matriz[LIN][COL];
     int i, j;
     TEstoque ident;
 
     printf("Informe a matriz de estoque: \n"); //REQUER TRATAMENTO DE VALORES
     for(i = 0; i < quant_loja; i++) {
-        ident.id[i]; // PRECISA ADICIONAR ID NAS LOJAS PARA PESQUISA
-        for(j = 0; j < *aux_prod; i++) {
+        ident.id[i]++; // PRECISA ADICIONAR ID NAS LOJAS PARA PESQUISA
+        for(j = 0; j < num_prod; i++) {
             scanf("%d", &matriz[i][j]);
         }
     }
