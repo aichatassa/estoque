@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 //Constantes para os índices de matrizes e vetores utilizados
 #define LIN 5
@@ -8,6 +9,8 @@
 
 //DECLARAÇÃO DAS FUNÇÕES PARA REMOVER WARNINGS AO COMPILAR
 int cadastra_quants();
+int cadastra_quants_loja();
+int cadastra_quants_produto();
 int cadastra_produto(int quant_produto);
 int matriz_estoque(int quant_loja, int quant_produto);
 int vetor_abastecimento(int quant_produto);
@@ -76,12 +79,16 @@ int cadastra_quants_loja(){
 }
 
 int cadastra_quants_produto(){
-    char quant_produto[IND]; //DEIXEI EM CHAR PARA PASSAR PARA INT PARA TESTAR ERRO
-    //int aux_prod;
+    int quant_produto;
+    int *aux_prod;//TENTEI USAR PONTEIRO PARA ARRUMAR O PROBLEMA
 
- 
+    aux_prod = &quant_produto;
+
     printf("Entre com o número de produtos \n");
-    fgets(quant_produto, IND, stdin);
+    scanf("%d", &*aux_prod);
+    printf("\n");
+    printf("%d", *aux_prod);
+    
         
     //aux_prod = atoi(quant_produto);
         
@@ -89,11 +96,15 @@ int cadastra_quants_produto(){
     
     //printf("\n");
     
-    //printf(quant_produto);
+    
+    //aux_prod = quant_produto;
+    
+    //printf(aux_prod);
     
     //printf("\n");
     
-    return quant_produto;
+    
+    return *aux_prod;
 }
 
 int cadastra_produto(int quant_produto) {
@@ -170,7 +181,7 @@ int abastecimento_estoque(int quant_loja, int quant_produto, int vetor[IND], int
     printf("Estoque atualizado: \n");
     for(i = 0; i < quant_loja; i++) {
         for(j = 0; j < quant_produto; j++) {
-            printf(matriz[i][j]);
+            printf("%d", matriz[i][j]);
         }
         printf("\n");
     }
