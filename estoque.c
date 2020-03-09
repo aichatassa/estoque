@@ -11,10 +11,10 @@
 int cadastra_quants();
 int cadastra_quants_loja();
 int cadastra_quants_produto();
-int cadastra_produto(int quant_produto);
-int matriz_estoque(int quant_loja, int quant_produto);
-int vetor_abastecimento(int quant_produto);
-int abastecimento_estoque(int quant_loja, int quant_produto, int vetor[IND], int matriz[LIN][COL]);
+int cadastra_produto(int *aux_prod);
+//int matriz_estoque(int quant_loja, int *aux_prod);
+//int vetor_abastecimento(int *aux_prod);
+//int abastecimento_estoque(int quant_loja, int *aux_prod, int vetor[IND], int matriz[LIN][COL]);
 
 typedef struct { //Struct que armazena os dados do produto
     float preco[IND];
@@ -28,13 +28,13 @@ int main () {
     cadastra_quants_loja();
     cadastra_quants_produto();
     cadastra_produto(cadastra_quants_produto);
-    matriz_estoque(cadastra_quants_loja, cadastra_quants_produto);
-    vetor_abastecimento(cadastra_quants_produto);
-    menu();
+    //matriz_estoque(cadastra_quants_loja, cadastra_quants_produto);
+    //vetor_abastecimento(cadastra_quants_produto);
+    //menu();
 
 }
 
-int menu() { //Menu de seleção das opções do programa
+/*int menu() { //Menu de seleção das opções do programa
     int op;
 
     do {
@@ -64,7 +64,7 @@ int menu() { //Menu de seleção das opções do programa
         }
 
     }while(op != 3);
-}
+}*/
 
 int cadastra_quants_loja(){
     int quant_loja;
@@ -87,44 +87,34 @@ int cadastra_quants_produto(){
     printf("Entre com o número de produtos \n");
     scanf("%d", &*aux_prod);
     printf("\n");
-    printf("%d", *aux_prod);
-    
-        
+    aux_prod = &quant_produto;
+    printf("%d", *aux_prod);  
     //aux_prod = atoi(quant_produto);
-        
     // printf(aux_prod);
-    
-    //printf("\n");
-    
-    
+    printf("\n");
     //aux_prod = quant_produto;
-    
     //printf(aux_prod);
-    
     //printf("\n");
-    
-    
+    //aux_prod = malloc (sizeof(int));
+
+    printf("%d", aux_prod);
+    printf("\n");
+   
     return *aux_prod;
 }
 
-int cadastra_produto(int quant_produto) {
+int cadastra_produto(int *aux_prod) {
     int i;
-    int aux_prod = atoi(quant_produto); //NAO FUNCIONA AINDA
     Estoque prod;
     Estoque valor;
     Estoque ident;
-    
-    printf(aux_prod);
-    
-    //printf(quant_produto);
-    
-    //printf("\n\n");
-
+    printf("%d", aux_prod);
     printf("Informe os produtos: \n"); //ERRO FAZ FUNÇÃO SER PULADA (SEGMENTATION FAULT)
-
-    for(i = 0; i < atoi(quant_produto); i++){
+    printf("%d", *aux_prod);
+    for(i = 0; i < *aux_prod; i++){
         printf("Nome: \n");
-        fgets(prod.nome, 100, stdin);
+        fgets(prod.nome, IND, stdin);
+        getchar();
 
         printf("Preco: \n");
         scanf("%f", &valor.preco[i]);
@@ -136,7 +126,7 @@ int cadastra_produto(int quant_produto) {
     return prod.nome;
 }
 
-int matriz_estoque(int quant_loja, int quant_produto){
+/*int matriz_estoque(int quant_loja, int *aux_prod){
     int matriz[LIN][COL];
     int i, j;
     Estoque ident;
@@ -144,32 +134,32 @@ int matriz_estoque(int quant_loja, int quant_produto){
     printf("Informe a matriz de estoque: \n"); //REQUER TRATAMENTO DE VALORES
     for(i = 0; i < quant_loja; i++) {
         ident.id[i]; // PRECISA ADICIONAR ID NAS LOJAS PARA PESQUISA
-        for(j = 0; j < quant_produto; i++) {
+        for(j = 0; j < *aux_prod; i++) {
             scanf("%d", &matriz[i][j]);
         }
     }
     return 0;
-}
+}*/
 
-int vetor_abastecimento(int quant_produto) {
+/*int vetor_abastecimento(int *aux_prod) {
     int vetor[IND];
     int i;
 
     printf("Informe o vetor de abastecimento: \n"); //REQUER TRATAMENTO DE VALORES
-    for(i = 0; i < quant_produto; i++) {
+    for(i = 0; i < *aux_prod; i++) {
         scanf("%d", &vetor[i]);
     }
 
     return 0;
 }
 
-int abastecimento_estoque(int quant_loja, int quant_produto, int vetor[IND], int matriz[LIN][COL]){
+int abastecimento_estoque(int quant_loja, int *aux_prod, int vetor[IND], int matriz[LIN][COL]){
 //PRECISA VERIFICAR QUAL É O MENOR VALOR DE CADA LINHA E SUBSTITUIR
     int i, j, menor_pos;
     menor_pos = 0;
 
     for(i = 0; i < quant_loja; i++) {
-        for(j = 0; j < quant_produto; j++){
+        for(j = 0; j < *aux_prod; j++){
             if(menor_pos > matriz[i][j]) {
                 menor_pos = matriz[i][j];
 
@@ -180,9 +170,9 @@ int abastecimento_estoque(int quant_loja, int quant_produto, int vetor[IND], int
 
     printf("Estoque atualizado: \n");
     for(i = 0; i < quant_loja; i++) {
-        for(j = 0; j < quant_produto; j++) {
+        for(j = 0; j < *aux_prod; j++) {
             printf("%d", matriz[i][j]);
         }
         printf("\n");
     }
-}
+}*/
