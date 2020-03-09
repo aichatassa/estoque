@@ -16,12 +16,12 @@ int cadastra_produto(int *aux_prod);
 //int vetor_abastecimento(int *aux_prod);
 //int abastecimento_estoque(int quant_loja, int *aux_prod, int vetor[IND], int matriz[LIN][COL]);
 
-typedef struct { //Struct que armazena os dados do produto
+struct Estoque { //Struct que armazena os dados do produto
     float preco[IND];
     char nome[IND];
     int id[IND];
-
-} Estoque; //Define o nome do struct com variável do tipo Estoque
+};
+typedef struct Estoque TEstoque; //Define o nome do struct com variável do tipo TEstoque
 
 int main () {
 
@@ -119,8 +119,7 @@ int cadastra_produto(int *aux_prod) {
         printf("Preco: \n");
         scanf("%f", &valor.preco[i]);
         
-        getchar();
-        
+        getchar(); 
     }
 
     return prod.nome;
@@ -129,7 +128,7 @@ int cadastra_produto(int *aux_prod) {
 /*int matriz_estoque(int quant_loja, int *aux_prod){
     int matriz[LIN][COL];
     int i, j;
-    Estoque ident;
+    TEstoque ident;
 
     printf("Informe a matriz de estoque: \n"); //REQUER TRATAMENTO DE VALORES
     for(i = 0; i < quant_loja; i++) {
